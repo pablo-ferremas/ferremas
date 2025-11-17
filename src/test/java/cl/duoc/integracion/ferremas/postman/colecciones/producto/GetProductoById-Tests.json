@@ -1,0 +1,1323 @@
+{
+  "info": {
+    "name": "GetProductoById Tests",
+    "description": "Colección de pruebas para el endpoint GET /api/v1/productos/{id}",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. GET - Obtener Producto por ID Válido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/{{valid_producto_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "{{valid_producto_id}}"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. GET - Obtener Producto por ID Inválido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/{{invalid_producto_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "{{invalid_producto_id}}"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. GET - Obtener Producto con ID 0",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/0",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "0"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. GET - Obtener Producto con ID Negativo",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/-1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "-1"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05. GET - Obtener Producto con ID Muy Grande",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/999999999",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "999999999"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06. GET - Obtener Producto con ID como String",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/abc",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "abc"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "07. GET - Obtener Producto con ID con Caracteres Especiales",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/1%2B1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "1+1"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "08. GET - Obtener Producto con ID con Espacios",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/%201%20",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            " 1 "
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "09. GET - Obtener Producto con ID Decimal",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/1.5",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "1.5"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. GET - Obtener Producto con ID Vacío",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            ""
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. GET - Obtener Producto con ID y Query Parameters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/{{valid_producto_id}}?include=precios&include=categoria",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "{{valid_producto_id}}"
+          ],
+          "query": [
+            {
+              "key": "include",
+              "value": "precios"
+            },
+            {
+              "key": "include",
+              "value": "categoria"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. GET - Obtener Producto con ID y Headers Adicionales",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          },
+          {
+            "key": "User-Agent",
+            "value": "PostmanRuntime/7.32.3"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/{{valid_producto_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "{{valid_producto_id}}"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "13. GET - Obtener Producto con ID con Caracteres de Control",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/1%0A2",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "1\n2"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "14. GET - Obtener Producto con ID con Caracteres Unicode",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/1ñáéíóú",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "1ñáéíóú"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "15. GET - Obtener Producto con ID con Caracteres Especiales Extremos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/<script>alert('xss')</script>",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "<script>alert('xss')</script>"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "16. GET - Obtener Producto con ID con SQL Injection",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/1'; DROP TABLE productos; --",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "1'; DROP TABLE productos; --"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "17. GET - Obtener Producto con ID con Caracteres Muy Largos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/{{very_long_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "{{very_long_id}}"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "18. GET - Obtener Producto con ID con Valores Booleanos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/true",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "true"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "19. GET - Obtener Producto con ID con Valores Null",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/null",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "null"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "20. GET - Obtener Producto con ID con Valores Undefined",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/undefined",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "undefined"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "21. GET - Obtener Producto con ID con Valores NaN",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/NaN",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "NaN"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "22. GET - Obtener Producto con ID con Valores Infinity",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/Infinity",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "Infinity"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "23. GET - Obtener Producto con ID con Valores Array",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/[1,2,3]",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "[1,2,3]"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "24. GET - Obtener Producto con ID con Valores Object",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos/{\"id\":1}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos",
+            "{\"id\":1}"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "api_version",
+      "value": "api/v1"
+    }
+  ]
+}

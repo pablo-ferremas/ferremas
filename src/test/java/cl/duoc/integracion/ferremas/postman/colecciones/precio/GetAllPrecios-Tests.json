@@ -1,0 +1,1085 @@
+{
+  "info": {
+    "name": "GetAllPrecios Tests",
+    "description": "Colección de pruebas para el endpoint GET /api/v1/precios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. GET - Obtener Todos los Precios",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. GET - Obtener Precios con Header Content-Type",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. GET - Obtener Precios con Accept XML",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. GET - Obtener Precios con Accept Text",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05. GET - Obtener Precios con User-Agent",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "User-Agent",
+            "value": "PostmanRuntime/7.32.3"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06. GET - Obtener Precios con Cache-Control",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "07. GET - Obtener Precios con Authorization Header",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer dummy-token"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "08. GET - Obtener Precios con Query Parameter Limit",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?limit=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "09. GET - Obtener Precios con Query Parameter Offset",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?offset=5",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "offset",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. GET - Obtener Precios con Query Parameter Sort",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?sort=fecha",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "fecha"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. GET - Obtener Precios con Query Parameter Producto ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?producto_id={{valid_producto_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "producto_id",
+              "value": "{{valid_producto_id}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. GET - Obtener Precios con Query Parameter Rango de Precios",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?min_precio=1000&max_precio=50000",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "min_precio",
+              "value": "1000"
+            },
+            {
+              "key": "max_precio",
+              "value": "50000"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "13. GET - Obtener Precios con Query Parameter Fecha",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?fecha_desde=2024-01-01&fecha_hasta=2024-12-31",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "fecha_desde",
+              "value": "2024-01-01"
+            },
+            {
+              "key": "fecha_hasta",
+              "value": "2024-12-31"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "14. GET - Obtener Precios con Múltiples Query Parameters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?limit=20&offset=0&sort=precio&order=desc&producto_id={{valid_producto_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "20"
+            },
+            {
+              "key": "offset",
+              "value": "0"
+            },
+            {
+              "key": "sort",
+              "value": "precio"
+            },
+            {
+              "key": "order",
+              "value": "desc"
+            },
+            {
+              "key": "producto_id",
+              "value": "{{valid_producto_id}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "15. GET - Obtener Precios con Query Parameter Inválido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?parametro_invalido=valor",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "parametro_invalido",
+              "value": "valor"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "16. GET - Obtener Precios con Query Parameter con Espacios",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?search=precio%20actualizado",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "precio actualizado"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "17. GET - Obtener Precios con Query Parameter con Caracteres Especiales",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios?filter=precio%3E1000%20AND%20precio%3C50000",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "precio>1000 AND precio<50000"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "18. GET - Obtener Precios con Headers Múltiples",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          },
+          {
+            "key": "User-Agent",
+            "value": "PostmanRuntime/7.32.3"
+          },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/precios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "precios"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "api_version",
+      "value": "api/v1"
+    }
+  ]
+}

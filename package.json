@@ -1,0 +1,28 @@
+{
+  "name": "ferremas-api-tests",
+  "version": "1.0.0",
+  "description": "Pruebas automatizadas para la API de Usuarios de Ferremas",
+  "main": "generate-test-data.js",
+  "scripts": {
+    "setup": "npm install -g newman",
+    "generate-data": "node generate-test-data.js",
+    "test": "newman run ferremas-usuarios-tests.postman_collection.json -e newman-environment.json --reporters cli,json --reporter-json-export test-results.json --verbose",
+    "test-windows": "run-tests.bat",
+    "test-unix": "./run-tests.sh"
+  },
+  "keywords": [
+    "api",
+    "testing",
+    "postman",
+    "newman",
+    "spring-boot",
+    "java"
+  ],
+  "author": "Ferremas Development Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+} 

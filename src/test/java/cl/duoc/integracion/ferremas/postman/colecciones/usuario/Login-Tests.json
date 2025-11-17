@@ -1,0 +1,1158 @@
+{
+  "info": {
+    "name": "Login Tests",
+    "description": "Colección de pruebas para el endpoint de login del UsuarioController",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. Login - Credenciales Correctas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. Login - Credenciales Incorrectas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{invalid_email}}\",\n  \"password\": \"{{invalid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. Login - Email Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. Login - Password Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05. Login - Email Correcto, Password Incorrecto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{invalid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06. Login - Email Incorrecto, Password Correcto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{invalid_email}}\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "07. Login - Email con Formato Inválido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"email_invalido\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "08. Login - Password Muy Corto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"123\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "09. Login - Cuerpo de Request Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. Login - Sin Content-Type Header",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. Login - Email con Espacios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"  {{valid_email}}  \",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. Login - Password con Espacios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"  {{valid_password}}  \"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "13. Login - JSON Malformado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{valid_password}}\",\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "14. Login - Email con Caracteres Especiales Extremos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@test.com<script>alert('xss')</script>\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "15. Login - Password con Caracteres Especiales Extremos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"'; DROP TABLE usuarios; --\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "16. Login - Email Muy Largo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{very_long_email}}\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "17. Login - Password Muy Largo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{very_long_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "18. Login - Email con Caracteres Unicode",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"tést@tést.com\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "19. Login - Email con Caracteres de Control",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test\\n@test.com\",\n  \"password\": \"{{valid_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "20. Login - Cuerpo con Campos Adicionales",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{valid_password}}\",\n  \"campo_extra\": \"valor_extra\",\n  \"otro_campo\": 123\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "login"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "api_version",
+      "value": "api/v1"
+    }
+  ]
+}

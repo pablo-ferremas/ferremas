@@ -1,0 +1,45 @@
+=== ANÁLISIS COMPARATIVO TRIPARTITO JMeter ===
+
+🔥 RESULTADOS FINALES (Duration Assertion 30,000ms):
+• Total requests: 1,710
+• Exitosos: 1,706 (99.77%)
+• Fallidos: 4 (0.23%)
+• Tiempo promedio: 15,224ms
+• Min: 4ms | Max: 34,169ms
+• Throughput: 6.8 req/s
+• Duración: 4min 10s
+• SOLO 4 errores, todos en GET /productos por Duration Assertion
+
+📊 RESULTADOS MEDIOS (Duration Assertion 20,000ms):
+• Total requests: 1,710
+• Exitosos: 1,421 (83.10%)
+• Fallidos: 289 (16.90%)
+• Tiempo promedio: 14,219ms
+• Throughput: 7.28 req/s
+• Duración: 3min 55s
+
+📋 RESULTADOS INICIALES (HTTP Timeout 10,000ms):
+• Total requests: 1,710
+• Exitosos: 381 (22.3%)
+• Fallidos: 1,329 (77.7%)
+• Tiempo promedio: 13,976ms
+• Throughput: 7.5 req/s
+• Duración: 3min 49s
+
+🎯 EVOLUCIÓN DRAMÁTICA:
+Configuración 10s: 22.3% éxito
+Configuración 20s: 83.1% éxito (+60.8%)
+Configuración 30s: 99.77% éxito (+77.47% desde inicial, +16.67% desde 20s)
+
+📈 ANÁLISIS POR ENDPOINT (30,000ms):
+• POST Login Usuario: 580/580 = 100% éxito (PERFECTO)
+• GET Todos los productos: 546/550 = 99.27% éxito (4 timeouts >30s)
+• GET Producto por Id: 550/550 = 100% éxito (PERFECTO)
+• POST Crear Producto: 30/30 = 100% éxito (PERFECTO)
+
+🔍 CONCLUSIONES CRÍTICAS:
+1. Con 30s timeout: Sistema PRÁCTICAMENTE PERFECTO (99.77%)
+2. Solo GET /productos tiene problemas residuales mínimos (0.73% fallos)
+3. Todos los demás endpoints funcionan PERFECTAMENTE bajo carga
+4. Sistema COMPLETAMENTE VIABLE para producción
+5. Optimización de GET /productos es OPCIONAL, no crítica

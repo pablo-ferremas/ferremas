@@ -1,0 +1,1209 @@
+{
+  "info": {
+    "name": "GetAllProductos Tests",
+    "description": "Colección de pruebas para el endpoint GET /api/v1/productos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. GET - Obtener Todos los Productos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar estructura de la respuesta",
+              "pm.test(\"Response has correct structure\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.have.property('content');",
+              "    pm.expect(response).to.have.property('totalElements');",
+              "    pm.expect(response).to.have.property('totalPages');",
+              "    pm.expect(response).to.have.property('size');",
+              "    pm.expect(response).to.have.property('number');",
+              "});",
+              "",
+              "// Verificar que content sea un array",
+              "pm.test(\"Content is an array\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response.content).to.be.an('array');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. GET - Obtener Productos con Header Content-Type",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar estructura de la respuesta",
+              "pm.test(\"Response has correct structure\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.have.property('content');",
+              "    pm.expect(response).to.have.property('totalElements');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. GET - Obtener Productos con Accept XML",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. GET - Obtener Productos con Accept Text",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05. GET - Obtener Productos con User-Agent",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "User-Agent",
+            "value": "PostmanRuntime/7.32.3"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06. GET - Obtener Productos con Cache-Control",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "07. GET - Obtener Productos con Authorization Header",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer dummy-token"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "08. GET - Obtener Productos con Query Parameter Inválido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?parametro_invalido=valor",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "parametro_invalido",
+              "value": "valor"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "09. GET - Obtener Productos con Múltiples Query Parameters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?param1=valor1&param2=valor2&param3=valor3",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "param1",
+              "value": "valor1"
+            },
+            {
+              "key": "param2",
+              "value": "valor2"
+            },
+            {
+              "key": "param3",
+              "value": "valor3"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. GET - Obtener Productos con URL Encoding",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?search=herramienta%20profesional",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "herramienta profesional"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. GET - Obtener Productos con Query Parameter Muy Largo",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?search={{very_long_search_term}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "{{very_long_search_term}}"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. GET - Obtener Productos con Query Parameter con Caracteres Especiales",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?search=<script>alert('xss')</script>",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "<script>alert('xss')</script>"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "13. GET - Obtener Productos con Query Parameter SQL Injection",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?search='; DROP TABLE productos; --",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "'; DROP TABLE productos; --"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "14. GET - Obtener Productos con Query Parameter con Caracteres de Control",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?search=test%0Atest",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "test\ntest"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "15. GET - Obtener Productos con Query Parameter con Caracteres Unicode",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?search=herramienta%20profesional%20ñáéíóú",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "herramienta profesional ñáéíóú"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "16. GET - Obtener Productos con Query Parameter Numérico Inválido",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?page=abc&size=xyz",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "abc"
+            },
+            {
+              "key": "size",
+              "value": "xyz"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "17. GET - Obtener Productos con Query Parameter con Valores Extremos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?page=999999999&size=999999999",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "999999999"
+            },
+            {
+              "key": "size",
+              "value": "999999999"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "18. GET - Obtener Productos con Query Parameter con Valores Negativos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?page=-1&size=-10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "-1"
+            },
+            {
+              "key": "size",
+              "value": "-10"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "19. GET - Obtener Productos con Query Parameter con Valores Decimales",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?page=1.5&size=10.7",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1.5"
+            },
+            {
+              "key": "size",
+              "value": "10.7"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "20. GET - Obtener Productos con Query Parameter con Valores Booleanos",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/productos?active=true&featured=false",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "productos"
+          ],
+          "query": [
+            {
+              "key": "active",
+              "value": "true"
+            },
+            {
+              "key": "featured",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "api_version",
+      "value": "api/v1"
+    }
+  ]
+}

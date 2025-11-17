@@ -1,0 +1,58 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+*.log
+*.csv
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Test Reports ###
+# Allure Reports
+src/test/java/cl/duoc/integracion/ferremas/unitarias/reportes/
+target/allure-results/
+target/allure-report/
+allure-results/
+allure-report/
+
+# Maven Surefire Reports
+target/surefire-reports/
+target/site/
+
+# Postman Test Reports
+src/test/java/cl/duoc/integracion/ferremas/postman/reportes/
+src/test/java/cl/duoc/integracion/ferremas/postman/dashboard/
+
+# JMeter Test Reports
+src/test/java/cl/duoc/integracion/ferremas/jmeter/test-users.csv
+src/test/java/cl/duoc/integracion/ferremas/jmeter/resultados/
+/docs
+docs/
+/docs/

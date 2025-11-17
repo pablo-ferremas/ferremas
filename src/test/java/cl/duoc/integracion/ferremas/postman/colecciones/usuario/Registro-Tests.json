@@ -1,0 +1,1385 @@
+{
+  "info": {
+    "name": "Registro Tests",
+    "description": "Colección de pruebas para el endpoint de registro del UsuarioController",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. Registro - Datos Válidos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"{{test_email}}\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "02. Registro - Email Duplicado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Usuario Duplicado\",\n  \"email\": \"{{valid_email}}\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "03. Registro - Nombre Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"\",\n  \"email\": \"nuevo@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04. Registro - Email Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05. Registro - Password Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"nuevo@mail.com\",\n  \"password\": \"\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "06. Registro - Email con Formato Inválido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"email_invalido\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "07. Registro - Sin Rol (Debería usar default)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"sinrol@mail.com\",\n  \"password\": \"{{test_password}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "08. Registro - Cuerpo de Request Vacío",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "09. Registro - Nombre Muy Largo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Este es un nombre extremadamente largo que podría causar problemas en la base de datos si no hay validaciones apropiadas para el tamaño del campo\",\n  \"email\": \"nombre_largo@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. Registro - Password Muy Corto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"password_corto@mail.com\",\n  \"password\": \"123\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. Registro - Rol Inválido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"rol_invalido@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"ROL_INEXISTENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. Registro - Caracteres Especiales en Nombre",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"José María O'Connor-Smith\",\n  \"email\": \"caracteres_especiales@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "13. Registro - Email con Subdominio",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"usuario@subdominio.ejemplo.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "14. Registro - Sin Content-Type Header",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"sin_header@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "15. Registro - JSON Malformado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"json_malformado@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\",\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "16. Registro - Nombre con Caracteres de Control",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Juan\\nPérez\",\n  \"email\": \"control_chars@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "17. Registro - Email con Caracteres Especiales Extremos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"test@test.com<script>alert('xss')</script>\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "18. Registro - Password con Caracteres Especiales Extremos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"password_especial@mail.com\",\n  \"password\": \"'; DROP TABLE usuarios; --\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "19. Registro - Email Muy Largo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"{{very_long_email}}\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "20. Registro - Password Muy Largo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"password_largo@mail.com\",\n  \"password\": \"{{very_long_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado de error",
+              "pm.test(\"Status code is 400\", function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "21. Registro - Nombre con Caracteres Unicode",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"José María Ñoño\",\n  \"email\": \"unicode@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "22. Registro - Cuerpo con Campos Adicionales",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"{{test_nombre}}\",\n  \"email\": \"campos_extra@mail.com\",\n  \"password\": \"{{test_password}}\",\n  \"rol\": \"CLIENTE\",\n  \"campo_extra\": \"valor_extra\",\n  \"otro_campo\": 123,\n  \"array_extra\": [1, 2, 3]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "23. Registro - Valores Null",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": null,\n  \"email\": null,\n  \"password\": null,\n  \"rol\": null\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "24. Registro - Tipos de Datos Incorrectos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": 123,\n  \"email\": true,\n  \"password\": [\"array\"],\n  \"rol\": 456\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{api_version}}/usuarios/registro",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "{{api_version}}",
+            "usuarios",
+            "registro"
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar código de estado",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que la respuesta sea JSON válido",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.be.an('object');",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 5000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});",
+              "",
+              "// Verificar headers de respuesta",
+              "pm.test(\"Response has correct headers\", function () {",
+              "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "api_version",
+      "value": "api/v1"
+    }
+  ]
+}

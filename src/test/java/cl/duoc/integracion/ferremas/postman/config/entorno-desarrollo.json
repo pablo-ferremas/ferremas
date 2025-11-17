@@ -1,0 +1,295 @@
+{
+  "id": "entorno-desarrollo",
+  "name": "Entorno Desarrollo",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8090",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "api_version",
+      "value": "api/v1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "valid_email",
+      "value": "test1@test.com",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "valid_password",
+      "value": "test",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "invalid_email",
+      "value": "usuario_inexistente@mail.com",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "invalid_password",
+      "value": "password_incorrecto",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_nombre",
+      "value": "test1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_email",
+      "value": "test1@mail.com",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_password",
+      "value": "test",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "valid_producto_id",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "invalid_producto_id",
+      "value": "99999",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "valid_categoria_id",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "invalid_categoria_id",
+      "value": "99999",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_categoria_nombre",
+      "value": "Herramientas",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_categoria_nombre_duplicado",
+      "value": "Herramientas",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_categoria_nombre_nuevo",
+      "value": "Electricidad",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_categoria_nombre_vacio",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_categoria_nombre_largo",
+      "value": "CategoriaConUnNombreExcesivamenteLargoQueSuperaElLimiteEsperadoParaElCampoNombreDeLaBaseDeDatos",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_categoria_nombre_especial",
+      "value": "Categoría & Co. S.A.",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_producto_nombre",
+      "value": "Martillo Profesional",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_producto_codigo",
+      "value": "MART001",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_producto_descripcion",
+      "value": "Martillo de alta calidad para uso profesional",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_producto_imagen",
+      "value": "https://ejemplo.com/imagenes/martillo.jpg",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "valid_precio_id",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "invalid_precio_id",
+      "value": "99999",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor",
+      "value": "25000.50",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor_entero",
+      "value": "15000",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor_decimal",
+      "value": "1250.75",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor_cero",
+      "value": "0.00",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor_negativo",
+      "value": "-1000.00",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor_muy_alto",
+      "value": "999999999.99",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_precio_valor_muy_pequeno",
+      "value": "0.01",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_actual",
+      "value": "2024-01-15T10:30:00.000Z",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_pasada",
+      "value": "2023-12-01T08:00:00.000Z",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_futura",
+      "value": "2025-01-01T12:00:00.000Z",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "valid_marca_id",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "invalid_marca_id",
+      "value": "99999",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_marca_nombre",
+      "value": "Stanley",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_marca_nombre_duplicado",
+      "value": "Stanley",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_marca_nombre_nuevo",
+      "value": "Bosch",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_marca_nombre_vacio",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_marca_nombre_largo",
+      "value": "MarcaConUnNombreExcesivamenteLargoQueSuperaElLimiteEsperadoParaElCampoNombreDeLaBaseDeDatos",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_marca_nombre_especial",
+      "value": "Marca & Co. S.A.",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "banco_central_endpoint",
+      "value": "tasas",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_banco_central",
+      "value": "2025-05-30",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_banco_central_invalida",
+      "value": "2025-13-45",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_banco_central_futura",
+      "value": "2030-01-01",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_fecha_banco_central_pasada",
+      "value": "2020-01-01",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+} 

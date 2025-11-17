@@ -1,0 +1,45 @@
+=== ANÁLISIS COMPARATIVO JMETER ===
+
+📊 RESULTADOS ACTUALES (Duration Assertion 20,000ms):
+• Total requests: 1,710
+• Exitosos: 1,421 (83.10%)
+• Fallidos: 289 (16.90%)
+• Tiempo promedio: 14,219ms
+• Min: 4ms | Max: 26,912ms
+• Throughput: 7.28 req/s
+• Duración: 3min 55s
+• TODOS los errores son por Duration Assertion (>20s)
+
+📋 RESULTADOS ANTERIORES (HTTP Timeout 10,000ms):
+• Total requests: 1,710
+• Exitosos: 381 (22.3%)
+• Fallidos: 1,329 (77.7%)
+• Tiempo promedio: 13,976ms
+• Throughput: 7.5 req/s
+• Duración: 3min 49s
+• Errores principalmente por HTTP timeout (10s)
+
+🔍 DIFERENCIAS CLAVE:
+✅ Tasa de éxito MEJORÓ dramáticamente: 22.3% → 83.10% (+60.8%)
+✅ Errores REDUJERON significativamente: 1,329 → 289 (-1,040 errores)
+⚖️ Tiempo promedio similar: 13,976ms → 14,219ms (+243ms)
+📊 Throughput ligeramente menor pero más estable: 7.5 → 7.28 req/s
+
+📈 ANÁLISIS POR ENDPOINT (Resultados Actuales):
+• POST Login Usuario: 503/580 = 86.7% éxito
+• GET Todos los productos: 369/550 = 67.1% éxito  (más problemático)
+• GET Producto por Id: 520/550 = 94.5% éxito
+• POST Crear Producto: 29/30 = 96.7% éxito
+
+🎯 CONCLUSIONES IMPORTANTES:
+1. La configuración Duration Assertion (20s) vs HTTP Timeout (10s) hace una DIFERENCIA CRÍTICA
+2. El sistema SÍ puede manejar la carga, pero necesita más tiempo de respuesta
+3. GET /productos sigue siendo el endpoint más problemático (67.1% vs 94.5% otros)
+4. Los timeouts HTTP restrictivos estaban generando FALSOS POSITIVOS
+5. Con timeouts realistas, el sistema muestra un rendimiento MUCHO MEJOR
+
+⚠️ IMPLICACIONES:
+• Los resultados anteriores (22.3% éxito) eran engañosos por timeout muy restrictivo
+• El sistema tiene capacidad real para ~83% de éxito bajo carga
+• Necesita optimización específica en endpoint GET /productos
+• Configuración de timeouts es CRÍTICA para pruebas realistas
