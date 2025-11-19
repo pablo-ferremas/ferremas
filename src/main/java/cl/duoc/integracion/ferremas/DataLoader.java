@@ -23,7 +23,7 @@ import net.datafaker.Faker;
 
 
 @Component
-@Profile("dev")
+@Profile("test")
 public class DataLoader implements CommandLineRunner {
 
     @Autowired

@@ -5,6 +5,9 @@ target/
 !**/src/test/**/target/
 *.log
 *.csv
+*.backup
+.env
+*.env
 
 ### STS ###
 .apt_generated
